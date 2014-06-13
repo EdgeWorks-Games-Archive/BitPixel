@@ -1,0 +1,34 @@
+language: objective-c
+
+# whitelist
+branches:
+ only:
+  - master
+  - develop
+  - /^release\/.*$/
+
+env:
+ matrix:
+  - MONO_VERSION="3.4.0"
+
+before_install:
+ - wget "http://download.mono-project.com/archive/${MONO_VERSION}/macos-10-x86/MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg"
+ - sudo installer -pkg "MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg" -target /
+
+script:
+ - xbuild .travis.proj
+ - sh -c "cd ./Client/bin/Release/ && zip -r ../../../SquareCubed_Client.zip ./*"
+ - sh -c "cd ./Server/bin/Release/ && zip -r ../../../SquareCubed_Server.zip ./*"
+
+deploy:
+ provider: releases
+ api_key:
+  secure: Ku6t99tTTPjXCKtyIoYH+W8vxnUKVQ/F/PRVcxsZndxMTWW2vgO9fncFixqGwmYXrI0EPTVUQElfNnOZfLbefARHzFf3huJX97IuTqoKOmQeeyq5aMKcqG7h2QRlvVMNHKFhJugdwRi2PAcQoMq1bByYiO8Uia8fsipWjDP1I+A=
+ file:
+  - "SquareCubed_Client.zip"
+  - "SquareCubed_Server.zip"
+ skip_cleanup: true
+ on:
+  repo: EdgeWorks-Games/SquareCubed
+  tags: true
+  all_branches: true
