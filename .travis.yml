@@ -17,18 +17,16 @@ before_install:
 
 script:
  - xbuild .travis.proj
- - sh -c "cd ./Client/bin/Release/ && zip -r ../../../SquareCubed_Client.zip ./*"
- - sh -c "cd ./Server/bin/Release/ && zip -r ../../../SquareCubed_Server.zip ./*"
+ - sh -c "cd ./BitPixel/bin/Release/ && zip -r ../../../BitPixel.zip ./*"
 
 deploy:
  provider: releases
  api_key:
   secure: Ku6t99tTTPjXCKtyIoYH+W8vxnUKVQ/F/PRVcxsZndxMTWW2vgO9fncFixqGwmYXrI0EPTVUQElfNnOZfLbefARHzFf3huJX97IuTqoKOmQeeyq5aMKcqG7h2QRlvVMNHKFhJugdwRi2PAcQoMq1bByYiO8Uia8fsipWjDP1I+A=
  file:
-  - "SquareCubed_Client.zip"
-  - "SquareCubed_Server.zip"
+  - "BitPixel.zip"
  skip_cleanup: true
  on:
-  repo: EdgeWorks-Games/SquareCubed
+  repo: EdgeWorks-Games/BitPixel
   tags: true
   all_branches: true
