@@ -7,8 +7,8 @@
     <ProjectGuid>{A43B6518-C453-4692-B371-E942163AE34F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BitPixel.Core</RootNamespace>
-    <AssemblyName>BitPixel.Core</AssemblyName>
+    <RootNamespace>BitPixel</RootNamespace>
+    <AssemblyName>BitPixel</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -1,4 +1,4 @@
-﻿using BitPixel.Core;
+﻿using BitPixel;
 using BitPixel.StateMachine;
 using Game.MainGame;
 using Game.MainMenu;
@@ -25,7 +25,7 @@ namespace Game
 				mainGameConfig.AddTransition(MainGameEvents.QuitToMenu, mainMenu);
 				mainGameConfig.AddExit(MainGameEvents.QuitToDesktop);
 
-				stateMachine.SetState<MainMenuState>();
+				stateMachine.InitialState = mainMenu;
 
 				engine.Start();
 			}
