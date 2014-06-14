@@ -6,9 +6,9 @@ namespace BitPixel.StateMachine
 {
 	public sealed class StateMachine : IEngineComponent
 	{
-		private IDictionary<Type, IStateConfiguration> _states = new Dictionary<Type, IStateConfiguration>();
+		private readonly IDictionary<IGameState, IStateConfiguration> _states = new Dictionary<IGameState, IStateConfiguration>();
 
-		public StateConfiguration<TEvents> AddState<TState, TEvents>()
+		public StateConfiguration<TEvents> AddState<TState, TEvents>(TState state)
 		{
 			throw new NotImplementedException();
 		}

@@ -7,19 +7,22 @@ namespace Game
 {
 	internal static class Program
 	{
-		private static void Main(string[] args)
+		private static void Main()
 		{
 			using (var engine = new GameEngine())
 			{
 				var stateMachine = new StateMachine();
 				engine.AddComponent(stateMachine);
 
-				var mainMenuConfig = stateMachine.AddState<MainMenuState, MainMenuEvents>();
-				mainMenuConfig.AddTransition<MainGameState>(MainMenuEvents.StartGame);
+				var mainMenu = new MainMenuState();
+				var mainGame = new MainGameState();
+
+				var mainMenuConfig = stateMachine.AddState<MainMenuState, MainMenuEvents>(mainMenu);
+				mainMenuConfig.AddTransition(MainMenuEvents.StartGame, mainGame);
 				mainMenuConfig.AddExit(MainMenuEvents.Quit);
 
-				var mainGameConfig = stateMachine.AddState<MainGameState, MainGameEvents>();
-				mainGameConfig.AddTransition<MainMenuState>(MainGameEvents.QuitToMenu);
+				var mainGameConfig = stateMachine.AddState<MainGameState, MainGameEvents>(mainGame);
+				mainGameConfig.AddTransition(MainGameEvents.QuitToMenu, mainMenu);
 				mainGameConfig.AddExit(MainGameEvents.QuitToDesktop);
 
 				stateMachine.SetState<MainMenuState>();

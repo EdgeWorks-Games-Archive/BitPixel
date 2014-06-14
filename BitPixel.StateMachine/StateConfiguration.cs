@@ -6,7 +6,11 @@
 
 	public class StateConfiguration<TEvents> : IStateConfiguration
 	{
-		public void AddTransition<TState>(TEvents evt)
+		internal StateConfiguration()
+		{
+		}
+
+		public void AddTransition(TEvents evt, IGameState state)
 		{
 			throw new System.NotImplementedException();
 		}

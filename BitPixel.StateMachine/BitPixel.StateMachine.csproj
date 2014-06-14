@@ -45,9 +45,9 @@
     <Compile Include="StateMachine.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BitPixel.Core\BitPixel.Core.csproj">
+    <ProjectReference Include="..\BitPixel\BitPixel.csproj">
       <Project>{A43B6518-C453-4692-B371-E942163AE34F}</Project>
-      <Name>BitPixel.Core</Name>
+      <Name>BitPixel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

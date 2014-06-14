@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BitPixel.Tests
 {
-    public class Class1
+    public class GameEngineTests
     {
     }
 }

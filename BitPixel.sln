@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.md = readme.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitPixel.Core", "BitPixel.Core\BitPixel.Core.csproj", "{A43B6518-C453-4692-B371-E942163AE34F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitPixel", "BitPixel\BitPixel.csproj", "{A43B6518-C453-4692-B371-E942163AE34F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{D9956E14-6746-4374-82A3-D0C541DCE5F7}"
 EndProject
