@@ -9,6 +9,7 @@ namespace BitPixel.StateMachine
 			new Dictionary<IGameState, IStateConfiguration>();
 
 		public IGameState InitialState { get; set; }
+		public IEnumerable<IFrameTask> FrameTasks { get; private set; }
 
 		public void Update(float delta)
 		{

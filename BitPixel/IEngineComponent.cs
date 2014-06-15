@@ -1,7 +1,9 @@
-﻿namespace BitPixel
+﻿using System.Collections.Generic;
+
+namespace BitPixel
 {
 	public interface IEngineComponent
 	{
-		void Update(float delta);
+		IEnumerable<IFrameTask> FrameTasks { get; }
 	}
 }

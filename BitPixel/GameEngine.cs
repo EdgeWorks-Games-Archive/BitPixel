@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading;
 
 namespace BitPixel
@@ -14,7 +16,7 @@ namespace BitPixel
 		}
 
 		public bool IsRunning { get; private set; }
-		public TimeSpan TargetDelta { get; set; }
+		public TimeSpan TargetFrameDelta { get; set; }
 		public EngineComponentCollection Components { get; private set; }
 
 		public void Dispose()
@@ -30,10 +32,9 @@ namespace BitPixel
 			_keepRunning = true;
 			while (_keepRunning)
 			{
-				foreach (var component in Components)
-					component.Update((float) TargetDelta.TotalSeconds);
-
-				Thread.Sleep(TargetDelta);
+				// Later on these will get sorted in the order they need to be executed in
+				foreach (var task in Components.SelectMany(c => c.FrameTasks))
+					task.Execute(TargetFrameDelta);
 			}
 
 			Trace.TraceInformation("Game loop ended!");

@@ -13,7 +13,7 @@ namespace Game
 			using (var engine = new GameEngine())
 			{
 				// Set engine settings
-				engine.TargetDelta = TimeSpan.FromSeconds(1/60f);
+				engine.TargetFrameDelta = TimeSpan.FromSeconds(1/60f);
 
 				// Initialize engine components
 				var stateMachine = new StateMachineComponent();
