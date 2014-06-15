@@ -43,7 +43,7 @@ namespace BitPixel.Tests
 					timer.Restart();
 				}
 			});
-			_engine.AddComponent(mock.Object);
+			_engine.Components.Add(mock.Object);
 
 		    if (!RunEngine(4))
 				Assert.True(false, "Engine failed to stop in time.");
@@ -60,7 +60,7 @@ namespace BitPixel.Tests
 	    {
 			var mock = new Mock<IEngineComponent>();
 			mock.Setup(c => c.Update(It.IsAny<float>())).Verifiable();
-			_engine.AddComponent(mock.Object);
+			_engine.Components.Add(mock.Object);
 
 			if (!RunEngine())
 				Assert.True(false, "Engine failed to stop in time.");
@@ -81,7 +81,7 @@ namespace BitPixel.Tests
 				if (i >= amountOfFrames)
 					_engine.Stop();
 			});
-			_engine.AddComponent(mock.Object);
+			_engine.Components.Add(mock.Object);
 
 			// Start the engine on a separate thread
 			var thread = new Thread(_engine.Start);
@@ -96,7 +96,7 @@ namespace BitPixel.Tests
 		    }
 
 			// Clean up
-			_engine.RemoveComponent(mock.Object);
+			_engine.Components.Remove(mock.Object);
 
 			return retVal;
 	    }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 
@@ -7,26 +6,19 @@ namespace BitPixel
 {
 	public sealed class GameEngine : IDisposable
 	{
-		private readonly List<IEngineComponent> _components = new List<IEngineComponent>();
 		private bool _keepRunning;
+
+		public GameEngine()
+		{
+			Components = new EngineComponentCollection();
+		}
 
 		public bool IsRunning { get; private set; }
 		public TimeSpan TargetDelta { get; set; }
+		public EngineComponentCollection Components { get; private set; }
 
 		public void Dispose()
 		{
-		}
-
-		public void AddComponent(IEngineComponent component)
-		{
-			Debug.Assert(!_components.Contains(component), "Cannot add already added component.");
-			_components.Add(component);
-		}
-
-		public void RemoveComponent(IEngineComponent component)
-		{
-			Debug.Assert(_components.Contains(component), "Cannot remove nonexistent component.");
-			_components.Remove(component);
 		}
 
 		public void Start()
@@ -38,7 +30,7 @@ namespace BitPixel
 			_keepRunning = true;
 			while (_keepRunning)
 			{
-				foreach (var component in _components)
+				foreach (var component in Components)
 					component.Update((float) TargetDelta.TotalSeconds);
 
 				Thread.Sleep(TargetDelta);

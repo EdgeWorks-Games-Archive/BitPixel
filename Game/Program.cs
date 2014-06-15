@@ -15,9 +15,11 @@ namespace Game
 				// Set engine settings
 				engine.TargetDelta = TimeSpan.FromSeconds(1/60f);
 
-				// Initialize state machine component
+				// Initialize engine components
 				var stateMachine = new StateMachineComponent();
-				engine.AddComponent(stateMachine);
+
+				// Add engine components
+				engine.Components.Add(stateMachine);
 
 				// Create states
 				var mainMenu = new MainMenuState();

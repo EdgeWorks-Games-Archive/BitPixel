@@ -10,12 +10,12 @@ namespace BitPixel.StateMachine
 
 		public IGameState InitialState { get; set; }
 
-		public StateConfiguration<TEvents> AddState<TState, TEvents>(TState state)
+		public void Update(float delta)
 		{
 			throw new NotImplementedException();
 		}
 
-		public void Update(float delta)
+		public StateConfiguration<TEvents> AddState<TState, TEvents>(TState state)
 		{
 			throw new NotImplementedException();
 		}
