@@ -42,7 +42,7 @@
     <Compile Include="IGameState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StateConfiguration.cs" />
-    <Compile Include="StateMachine.cs" />
+    <Compile Include="StateMachineComponent.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BitPixel\BitPixel.csproj">

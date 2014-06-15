@@ -7,10 +7,11 @@ namespace BitPixel
 {
 	public sealed class GameEngine : IDisposable
 	{
+		private readonly List<IEngineComponent> _components = new List<IEngineComponent>();
 		private bool _keepRunning;
-		private readonly List<IEngineComponent> _components = new List<IEngineComponent>(); 
 
 		public bool IsRunning { get; private set; }
+		public TimeSpan TargetDelta { get; set; }
 
 		public void Dispose()
 		{
@@ -37,7 +38,10 @@ namespace BitPixel
 			_keepRunning = true;
 			while (_keepRunning)
 			{
-				Thread.Sleep(16);
+				foreach (var component in _components)
+					component.Update((float) TargetDelta.TotalSeconds);
+
+				Thread.Sleep(TargetDelta);
 			}
 
 			Trace.TraceInformation("Game loop ended!");

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BitPixel.StateMachine
 {
-	public sealed class StateMachine : IEngineComponent
+	public sealed class StateMachineComponent : IEngineComponent
 	{
 		private readonly IDictionary<IGameState, IStateConfiguration> _states =
 			new Dictionary<IGameState, IStateConfiguration>();
@@ -16,11 +16,6 @@ namespace BitPixel.StateMachine
 		}
 
 		public void Update(float delta)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void Render(float delta)
 		{
 			throw new NotImplementedException();
 		}
