@@ -1,5 +1,6 @@
 ﻿using System;
 using BitPixel;
+using BitPixel.Graphics;
 using BitPixel.World;
 
 namespace Game
@@ -14,12 +15,20 @@ namespace Game
 				TargetFrameDelta = TimeSpan.FromSeconds(1/60f)
 			};
 
+			// Set up a layer manager to render layers
+			var layerManager = new LayerManager<RenderLayers>(gameLoop);
+
 			// Set up a test world
-			var world = new WorldController(gameLoop);
-			world.GenerateNewWorld(8);
+			var world = new World();
+			layerManager.AddLayer(world, RenderLayers.World);
 
 			// Run the game loop
 			gameLoop.Start();
+		}
+
+		private enum RenderLayers
+		{
+			World
 		}
 	}
 }

@@ -1,8 +1,10 @@
-﻿namespace BitPixel.World
+﻿using BitPixel.Graphics;
+
+namespace BitPixel.World
 {
-	internal class WorldModel
+	public class World : IRenderLayer
 	{
-		public WorldModel()
+		public World()
 		{
 			// A world intrinsically always will have a terrain.
 			// Giving it a new terrain would mess with other parts of the world, so it's safer if we don't allow that.

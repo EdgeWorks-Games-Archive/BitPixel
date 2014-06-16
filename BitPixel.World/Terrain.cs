@@ -1,6 +1,6 @@
 ﻿namespace BitPixel.World
 {
-	internal class Terrain
+	public class Terrain
 	{
 		public void GenerateChunk(int chunkLocation)
 		{
