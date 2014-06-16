@@ -1,6 +1,6 @@
 ﻿namespace BitPixel.World
 {
-	public class World
+	internal class WorldView
 	{
 	}
 }

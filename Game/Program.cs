@@ -14,10 +14,11 @@ namespace Game
 				TargetFrameDelta = TimeSpan.FromSeconds(1/60f)
 			};
 
-			// Set up other components
-			var world = new World();
+			// Set up a test world
+			var world = new WorldController(gameLoop);
+			world.GenerateNewWorld(8);
 
-			// Actually run the engine
+			// Run the game loop
 			gameLoop.Start();
 		}
 	}

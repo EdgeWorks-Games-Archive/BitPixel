@@ -8,7 +8,7 @@ namespace BitPixel.Tests
 		private readonly GameLoop _gameLoop = new GameLoop();
 
 		[Fact]
-		public void DoesNotKeepRunningAfterStart()
+		public void DoesNotRunAsync()
 		{
 			RunEngine(_gameLoop);
 

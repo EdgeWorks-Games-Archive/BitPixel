@@ -39,8 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="World.cs" />
+    <Compile Include="Terrain.cs" />
+    <Compile Include="WorldController.cs" />
+    <Compile Include="WorldModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorldView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BitPixel\BitPixel.csproj">
