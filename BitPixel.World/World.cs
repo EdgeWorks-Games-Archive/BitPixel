@@ -1,8 +1,6 @@
-﻿using BitPixel.Graphics;
-
-namespace BitPixel.World
+﻿namespace BitPixel.World
 {
-	public class World : IRenderLayer
+	public class World
 	{
 		public World()
 		{
@@ -12,5 +10,9 @@ namespace BitPixel.World
 		}
 
 		public Terrain Terrain { get; private set; }
+
+		public void Render()
+		{
+		}
 	}
 }

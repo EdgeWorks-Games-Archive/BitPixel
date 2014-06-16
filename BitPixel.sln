@@ -30,7 +30,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{83376B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitPixel.World", "BitPixel.World\BitPixel.World.csproj", "{386249B7-A890-4D54-8705-B898CD9E6AB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitPixel.Graphics", "BitPixel.Graphics\BitPixel.Graphics.csproj", "{F1D59813-5675-42D7-AC1A-522EA5B17C23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitPixel.Rendering", "BitPixel.Rendering\BitPixel.Rendering.csproj", "{F1D59813-5675-42D7-AC1A-522EA5B17C23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -44,15 +44,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BitPixel.Graphics\BitPixel.Graphics.csproj">
+    <ProjectReference Include="..\BitPixel.Rendering\BitPixel.Rendering.csproj">
       <Project>{F1D59813-5675-42D7-AC1A-522EA5B17C23}</Project>
-      <Name>BitPixel.Graphics</Name>
+      <Name>BitPixel.Rendering</Name>
     </ProjectReference>
     <ProjectReference Include="..\BitPixel\BitPixel.csproj">
       <Project>{A43B6518-C453-4692-B371-E942163AE34F}</Project>
       <Name>BitPixel</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

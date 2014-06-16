@@ -8,10 +8,9 @@ namespace BitPixel
 		private bool _keepRunning;
 
 		public bool IsRunning { get; private set; }
-		public TimeSpan TargetFrameDelta { get; set; }
 
-		public event EventHandler Update = (s, a) => { };
-		public event EventHandler Render = (s, a) => { };
+		public event EventHandler<GameLoopEventArgs> Update = (s, a) => { };
+		public event EventHandler<GameLoopEventArgs> Render = (s, a) => { };
 
 		public void Start()
 		{
@@ -22,8 +21,8 @@ namespace BitPixel
 			_keepRunning = true;
 			while (_keepRunning)
 			{
-				Update(this, EventArgs.Empty);
-				Render(this, EventArgs.Empty);
+				Update(this, new GameLoopEventArgs(TimeSpan.FromMilliseconds(16)));
+				Render(this, new GameLoopEventArgs(TimeSpan.FromMilliseconds(16)));
 			}
 			IsRunning = false;
 
@@ -37,5 +36,15 @@ namespace BitPixel
 
 			_keepRunning = false;
 		}
+	}
+
+	public sealed class GameLoopEventArgs : EventArgs
+	{
+		public GameLoopEventArgs(TimeSpan delta)
+		{
+			Delta = delta;
+		}
+
+		public TimeSpan Delta { get; private set; }
 	}
 }
