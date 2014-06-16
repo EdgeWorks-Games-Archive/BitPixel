@@ -15,49 +15,42 @@ namespace BitPixel.Tests
 		}
 
 		[Fact]
-		public void ComponentsGetUpdated()
+		public void LoopEventsFire()
 		{
-			var mock = new Mock<IEngineComponent>();
-			mock.Setup(t => t.Update(It.IsAny<TimeSpan>())).Verifiable();
-			_engine.Components.Add(mock.Object);
+			bool updateFired = false, renderFired = false;
+			_engine.Update += (s, e) => updateFired = true;
+			_engine.Render += (s, e) => renderFired = true;
 
-			if (!RunEngine())
+			if (!RunEngine(_engine))
 				Assert.True(false, "Engine failed to stop in time.");
 
-			mock.VerifyAll();
+			Assert.True(updateFired);
+			Assert.True(renderFired);
 		}
 
-		private bool RunEngine(int amountOfFrames = 1, int timeout = 500)
+		private static bool RunEngine(GameEngine engine, int amountOfFrames = 1, int timeout = 500)
 		{
 			var i = 0;
-			var retVal = true;
 
-			// Add a component that will stop the engine after the target amount of frames has been reached
-			var mock = new Mock<IEngineComponent>();
-			mock.Setup(c => c.Update(It.IsAny<TimeSpan>())).Callback(() =>
+			// Make sure the engine stops after the required amount of frames
+			engine.Update += (s, e) =>
 			{
 				i++;
 				if (i >= amountOfFrames)
-					_engine.Stop();
-			});
-			_engine.Components.Add(mock.Object);
+					engine.Stop();
+			};
 
 			// Start the engine on a separate thread
-			var thread = new Thread(_engine.Start);
+			var thread = new Thread(engine.Start);
 			thread.Start();
 
 			// Give the thread some time
-			if (!thread.Join(timeout))
-			{
-				// Thread timed out, force quit
-				thread.Abort();
-				retVal = false;
-			}
+			if (thread.Join(timeout))
+				return true;
 
-			// Clean up
-			_engine.Components.Remove(mock.Object);
-
-			return retVal;
+			// Thread timed out, force quit
+			thread.Abort();
+			return false;
 		}
 	}
 }

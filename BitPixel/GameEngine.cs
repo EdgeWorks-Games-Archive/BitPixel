@@ -20,6 +20,9 @@ namespace BitPixel
 		{
 		}
 
+		public event EventHandler Update = (s, a) => { };
+		public event EventHandler Render = (s, a) => { };
+
 		public void Start()
 		{
 			Debug.Assert(!IsRunning, "Cannot start if already started.");
@@ -29,8 +32,8 @@ namespace BitPixel
 			_keepRunning = true;
 			while (_keepRunning)
 			{
-				foreach (var component in Components)
-					component.Update(TargetFrameDelta);
+				Update(this, EventArgs.Empty);
+				Render(this, EventArgs.Empty);
 			}
 
 			Trace.TraceInformation("Game loop ended!");

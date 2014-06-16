@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace BitPixel.StateMachine
 {
-	public sealed class StateMachineComponent : IEngineComponent
+	public sealed class StateMachineComponent : EngineComponentBase
 	{
 		private readonly IDictionary<IGameState, IStateConfiguration> _states =
 			new Dictionary<IGameState, IStateConfiguration>();
 
 		public IGameState InitialState { get; set; }
-
-		public void Update(TimeSpan delta)
-		{
-		}
 
 		public StateConfiguration<TEvents> AddState<TState, TEvents>(TState state)
 		{

@@ -41,7 +41,7 @@
   <ItemGroup>
     <Compile Include="GameEngine.cs" />
     <Compile Include="EngineComponentCollection.cs" />
-    <Compile Include="IEngineComponent.cs" />
+    <Compile Include="EngineComponentBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,11 +1,6 @@
-﻿using System;
-
-namespace BitPixel.Terrain
+﻿namespace BitPixel.Terrain
 {
-	public class WorldComponent : IEngineComponent
+	public class WorldComponent : EngineComponentBase
 	{
-		public void Update(TimeSpan delta)
-		{
-		}
 	}
 }
