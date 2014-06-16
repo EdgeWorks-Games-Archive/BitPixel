@@ -59,10 +59,6 @@
       <Project>{A43B6518-C453-4692-B371-E942163AE34F}</Project>
       <Name>BitPixel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BitPixel.StateMachine\BitPixel.StateMachine.csproj">
-      <Project>{17A2CAE5-00F2-4171-A5DE-388A91D94CEE}</Project>
-      <Name>BitPixel.StateMachine</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
