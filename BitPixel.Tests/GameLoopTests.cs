@@ -1,34 +1,35 @@
-﻿using System;
-using System.Threading;
-using Moq;
+﻿using System.Threading;
 using Xunit;
 
 namespace BitPixel.Tests
 {
-	public class GameEngineTests : IDisposable
+	public class GameLoopTests
 	{
-		private readonly GameEngine _engine = new GameEngine();
+		private readonly GameLoop _gameLoop = new GameLoop();
 
-		public void Dispose()
+		[Fact]
+		public void DoesNotKeepRunningAfterStart()
 		{
-			_engine.Dispose();
+			RunEngine(_gameLoop);
+
+			Assert.False(_gameLoop.IsRunning);
 		}
 
 		[Fact]
 		public void LoopEventsFire()
 		{
 			bool updateFired = false, renderFired = false;
-			_engine.Update += (s, e) => updateFired = true;
-			_engine.Render += (s, e) => renderFired = true;
+			_gameLoop.Update += (s, e) => updateFired = true;
+			_gameLoop.Render += (s, e) => renderFired = true;
 
-			if (!RunEngine(_engine))
+			if (!RunEngine(_gameLoop))
 				Assert.True(false, "Engine failed to stop in time.");
 
 			Assert.True(updateFired);
 			Assert.True(renderFired);
 		}
 
-		private static bool RunEngine(GameEngine engine, int amountOfFrames = 1, int timeout = 500)
+		private static bool RunEngine(GameLoop engine, int amountOfFrames = 1, int timeout = 500)
 		{
 			var i = 0;
 

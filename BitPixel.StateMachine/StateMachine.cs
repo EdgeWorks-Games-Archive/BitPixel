@@ -1,6 +1,6 @@
 ﻿namespace BitPixel.StateMachine
 {
-	public interface IGameState
+	public sealed class StateMachine
 	{
 	}
 }
