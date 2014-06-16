@@ -42,12 +42,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RenderContext.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BitPixel\BitPixel.csproj">
-      <Project>{A43B6518-C453-4692-B371-E942163AE34F}</Project>
-      <Name>BitPixel</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

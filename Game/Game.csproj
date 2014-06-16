@@ -52,10 +52,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BitPixel.Rendering\BitPixel.Rendering.csproj">
-      <Project>{F1D59813-5675-42D7-AC1A-522EA5B17C23}</Project>
-      <Name>BitPixel.Rendering</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BitPixel.World\BitPixel.World.csproj">
       <Project>{386249B7-A890-4D54-8705-B898CD9E6AB9}</Project>
       <Name>BitPixel.World</Name>

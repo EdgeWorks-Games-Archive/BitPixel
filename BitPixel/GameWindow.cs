@@ -1,11 +1,27 @@
 ﻿using System;
 using System.Diagnostics;
+using OpenTK.Graphics;
 
 namespace BitPixel
 {
-	public sealed class GameLoop
+	public sealed class GameWindow
 	{
-		private bool _keepRunning;
+		private readonly OpenTK.GameWindow _gameWindow = new OpenTK.GameWindow(1280, 720, GraphicsMode.Default, "BitPixel");
+
+		public GameWindow()
+		{
+			_gameWindow.UpdateFrame += (s, e) => Update(this, new GameLoopEventArgs(TimeSpan.FromSeconds(e.Time)));
+			_gameWindow.RenderFrame += OnRender;
+		}
+
+		void OnRender(object sender, OpenTK.FrameEventArgs e)
+		{
+			var time = TimeSpan.FromSeconds(e.Time);
+
+			Render(this, new GameLoopEventArgs(time));
+
+			_gameWindow.SwapBuffers();
+		}
 
 		public bool IsRunning { get; private set; }
 
@@ -18,12 +34,9 @@ namespace BitPixel
 			Trace.TraceInformation("Starting game loop...");
 
 			IsRunning = true;
-			_keepRunning = true;
-			while (_keepRunning)
-			{
-				Update(this, new GameLoopEventArgs(TimeSpan.FromMilliseconds(16)));
-				Render(this, new GameLoopEventArgs(TimeSpan.FromMilliseconds(16)));
-			}
+
+			_gameWindow.Run(60);
+
 			IsRunning = false;
 
 			Trace.TraceInformation("Game loop ended!");
@@ -34,7 +47,7 @@ namespace BitPixel
 			Debug.Assert(IsRunning);
 			Trace.TraceInformation("Stop() called!");
 
-			_keepRunning = false;
+			_gameWindow.Close();
 		}
 	}
 

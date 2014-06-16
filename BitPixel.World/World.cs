@@ -10,9 +10,5 @@
 		}
 
 		public Terrain Terrain { get; private set; }
-
-		public void Render()
-		{
-		}
 	}
 }
