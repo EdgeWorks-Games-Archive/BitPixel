@@ -2,7 +2,7 @@
 
 namespace BitPixel.Terrain
 {
-	public class TerrainComponent : IEngineComponent
+	public class WorldComponent : IEngineComponent
 	{
 		public void Update(TimeSpan delta)
 		{

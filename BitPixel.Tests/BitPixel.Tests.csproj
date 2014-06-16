@@ -50,11 +50,20 @@
     <Compile Include="GameEngineTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StateMachine\StateMachineComponentTests.cs" />
+    <Compile Include="Terrain\TerrainComponentTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BitPixel.StateMachine\BitPixel.StateMachine.csproj">
+      <Project>{17a2cae5-00f2-4171-a5de-388a91d94cee}</Project>
+      <Name>BitPixel.StateMachine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BitPixel.Terrain\BitPixel.World.csproj">
+      <Project>{386249b7-a890-4d54-8705-b898cd9e6ab9}</Project>
+      <Name>BitPixel.World</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BitPixel\BitPixel.csproj">
       <Project>{A43B6518-C453-4692-B371-E942163AE34F}</Project>
       <Name>BitPixel</Name>

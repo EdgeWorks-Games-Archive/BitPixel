@@ -30,7 +30,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{83376B
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitPixel.Terrain", "BitPixel.Terrain\BitPixel.Terrain.csproj", "{386249B7-A890-4D54-8705-B898CD9E6AB9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitPixel.World", "BitPixel.World\BitPixel.World.csproj", "{386249B7-A890-4D54-8705-B898CD9E6AB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

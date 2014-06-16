@@ -18,21 +18,21 @@ namespace Game
 
 				// Initialize engine components
 				var stateMachine = new StateMachineComponent();
-				var terrain = new TerrainComponent();
+				var world = new WorldComponent();
 
 				// Add engine components
 				engine.Components.Add(stateMachine);
-				engine.Components.Add(terrain);
+				engine.Components.Add(world);
 
 				// Perform additional configurations
-				ConfigureStates(stateMachine, engine);
+				ConfigureStates(stateMachine);
 
 				// Actually run the engine
 				engine.Start();
 			}
 		}
 
-		private static void ConfigureStates(StateMachineComponent stateMachine, GameEngine engine)
+		private static void ConfigureStates(StateMachineComponent stateMachine)
 		{
 			// Create states
 			var mainMenu = new MainMenuState();
