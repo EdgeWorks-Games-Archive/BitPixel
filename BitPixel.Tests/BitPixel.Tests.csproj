@@ -60,7 +60,7 @@
       <Project>{17a2cae5-00f2-4171-a5de-388a91d94cee}</Project>
       <Name>BitPixel.StateMachine</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BitPixel.Terrain\BitPixel.World.csproj">
+    <ProjectReference Include="..\BitPixel.World\BitPixel.World.csproj">
       <Project>{386249b7-a890-4d54-8705-b898cd9e6ab9}</Project>
       <Name>BitPixel.World</Name>
     </ProjectReference>

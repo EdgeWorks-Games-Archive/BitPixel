@@ -12,13 +12,16 @@ If you are looking for the latest develop version, look at the develop branch.
 The latest stable version is the master branch.
 
 ### Contributing ###
-When contributing to this project, you pass over the rights to your contributed work
-to EdgeWorks Games(TM), transferring full rights to the contributions. You can not attach
-a license to work you contribute.
+When contributing to this project, you transfer full rights to your contributed work to
+EdgeWorks Games(TM). You can not attach a license to work you contribute.
 
-## Code License ##
-This license covers the all the code in this project (.cs, .cshtml, .html, .js, .coffee, .scss, etc...)
-unless specifically stated otherwise in the file or folder.
+### Releasing your Game ###
+If you've built a game on BitPixel and want to release it, you need to be aware of the license
+attached to BitPixel. You must make the source code available to the users of the program as
+described in the GPL, and they must be allowed to redistribute and modify it as described in
+the GPL. You can still sell your game, but only under these restrictions.
+
+## License ##
 <div align="center">
     <p>
         BitPixel - A 2D game engine.<br />
@@ -42,14 +45,4 @@ unless specifically stated otherwise in the file or folder.
         For contacting EdgeWorks Games directly, see http://edgeworksgames.com/.
     </p>
 </div>
-
-## Non-Code License ##
-This license covers all the non-code in this project. (.png, .psd, etc...)
-<div align="center">
-    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
-        <img alt="Creative Commons License"
-             style="border-width:0"
-             src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
-    </a><br />
-    This work by <a xmlns:cc="http://creativecommons.org/ns#" href="http://edgeworksgames.com/" property="cc:attributionName" rel="cc:attributionURL">EdgeWorks Games(TM)</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
-</div>
+Other licenses may apply to artwork or third party libraries included in BitPixel.
