@@ -9,16 +9,14 @@ namespace BitPixel.StateMachine
 			new Dictionary<IGameState, IStateConfiguration>();
 
 		public IGameState InitialState { get; set; }
-		public IEnumerable<IFrameTask> FrameTasks { get; private set; }
 
-		public void Update(float delta)
+		public void Update(TimeSpan delta)
 		{
-			throw new NotImplementedException();
 		}
 
 		public StateConfiguration<TEvents> AddState<TState, TEvents>(TState state)
 		{
-			throw new NotImplementedException();
+			return new StateConfiguration<TEvents>();
 		}
 	}
 }

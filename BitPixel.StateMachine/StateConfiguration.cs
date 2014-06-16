@@ -12,12 +12,10 @@
 
 		public void AddTransition(TEvents evt, IGameState state)
 		{
-			throw new System.NotImplementedException();
 		}
 
 		public void AddExit(TEvents evt)
 		{
-			throw new System.NotImplementedException();
 		}
 	}
 }

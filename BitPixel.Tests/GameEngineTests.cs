@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using Moq;
 using Xunit;
@@ -16,12 +15,11 @@ namespace BitPixel.Tests
 		}
 
 		[Fact]
-		public void ComponentFrametasksGetRun()
+		public void ComponentsGetUpdated()
 		{
-			var mock = new Mock<IFrameTask>();
-			mock.Setup(t => t.Execute(It.IsAny<TimeSpan>())).Verifiable();
-
-			_engine.Components.Add(new TaskExecutorComponent(mock.Object));
+			var mock = new Mock<IEngineComponent>();
+			mock.Setup(t => t.Update(It.IsAny<TimeSpan>())).Verifiable();
+			_engine.Components.Add(mock.Object);
 
 			if (!RunEngine())
 				Assert.True(false, "Engine failed to stop in time.");
@@ -35,15 +33,14 @@ namespace BitPixel.Tests
 			var retVal = true;
 
 			// Add a component that will stop the engine after the target amount of frames has been reached
-			var mock = new Mock<IFrameTask>();
-			mock.Setup(c => c.Execute(It.IsAny<TimeSpan>())).Callback(() =>
+			var mock = new Mock<IEngineComponent>();
+			mock.Setup(c => c.Update(It.IsAny<TimeSpan>())).Callback(() =>
 			{
 				i++;
 				if (i >= amountOfFrames)
 					_engine.Stop();
 			});
-			var component = new TaskExecutorComponent(mock.Object);
-			_engine.Components.Add(component);
+			_engine.Components.Add(mock.Object);
 
 			// Start the engine on a separate thread
 			var thread = new Thread(_engine.Start);
@@ -58,24 +55,9 @@ namespace BitPixel.Tests
 			}
 
 			// Clean up
-			_engine.Components.Remove(component);
+			_engine.Components.Remove(mock.Object);
 
 			return retVal;
-		}
-
-		private class TaskExecutorComponent : IEngineComponent
-		{
-			private readonly IFrameTask _task;
-
-			public TaskExecutorComponent(IFrameTask task)
-			{
-				_task = task;
-			}
-
-			public IEnumerable<IFrameTask> FrameTasks
-			{
-				get { return new List<IFrameTask> {_task}; }
-			}
 		}
 	}
 }

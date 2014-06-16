@@ -1,6 +1,7 @@
 ﻿using System;
 using BitPixel;
 using BitPixel.StateMachine;
+using BitPixel.Terrain;
 using Game.MainGame;
 using Game.MainMenu;
 
@@ -17,28 +18,36 @@ namespace Game
 
 				// Initialize engine components
 				var stateMachine = new StateMachineComponent();
+				var terrain = new TerrainComponent();
 
 				// Add engine components
 				engine.Components.Add(stateMachine);
+				engine.Components.Add(terrain);
 
-				// Create states
-				var mainMenu = new MainMenuState();
-				var mainGame = new MainGameState();
-
-				// Configure states in state machine
-				var mainMenuConfig = stateMachine.AddState<MainMenuState, MainMenuEvents>(mainMenu);
-				mainMenuConfig.AddTransition(MainMenuEvents.StartGame, mainGame);
-				mainMenuConfig.AddExit(MainMenuEvents.Quit);
-
-				var mainGameConfig = stateMachine.AddState<MainGameState, MainGameEvents>(mainGame);
-				mainGameConfig.AddTransition(MainGameEvents.QuitToMenu, mainMenu);
-				mainGameConfig.AddExit(MainGameEvents.QuitToDesktop);
-
-				stateMachine.InitialState = mainMenu;
+				// Perform additional configurations
+				ConfigureStates(stateMachine, engine);
 
 				// Actually run the engine
 				engine.Start();
 			}
+		}
+
+		private static void ConfigureStates(StateMachineComponent stateMachine, GameEngine engine)
+		{
+			// Create states
+			var mainMenu = new MainMenuState();
+			var mainGame = new MainGameState();
+
+			// Configure states in state machine
+			var mainMenuConfig = stateMachine.AddState<MainMenuState, MainMenuEvents>(mainMenu);
+			mainMenuConfig.AddTransition(MainMenuEvents.StartGame, mainGame);
+			mainMenuConfig.AddExit(MainMenuEvents.Quit);
+
+			var mainGameConfig = stateMachine.AddState<MainGameState, MainGameEvents>(mainGame);
+			mainGameConfig.AddTransition(MainGameEvents.QuitToMenu, mainMenu);
+			mainGameConfig.AddExit(MainGameEvents.QuitToDesktop);
+
+			stateMachine.InitialState = mainMenu;
 		}
 	}
 }

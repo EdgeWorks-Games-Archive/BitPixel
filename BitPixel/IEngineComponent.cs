@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 namespace BitPixel
 {
 	public interface IEngineComponent
 	{
-		IEnumerable<IFrameTask> FrameTasks { get; }
+		void Update(TimeSpan delta);
 	}
 }

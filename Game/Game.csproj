@@ -53,6 +53,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BitPixel.Terrain\BitPixel.Terrain.csproj">
+      <Project>{386249B7-A890-4D54-8705-B898CD9E6AB9}</Project>
+      <Name>BitPixel.Terrain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BitPixel\BitPixel.csproj">
       <Project>{A43B6518-C453-4692-B371-E942163AE34F}</Project>
       <Name>BitPixel</Name>

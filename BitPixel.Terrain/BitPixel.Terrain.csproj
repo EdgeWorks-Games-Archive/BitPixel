@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A43B6518-C453-4692-B371-E942163AE34F}</ProjectGuid>
+    <ProjectGuid>{386249B7-A890-4D54-8705-B898CD9E6AB9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BitPixel</RootNamespace>
-    <AssemblyName>BitPixel</AssemblyName>
+    <RootNamespace>BitPixel.Terrain</RootNamespace>
+    <AssemblyName>BitPixel.Terrain</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,10 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameEngine.cs" />
-    <Compile Include="EngineComponentCollection.cs" />
-    <Compile Include="IEngineComponent.cs" />
+    <Compile Include="TerrainComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BitPixel\BitPixel.csproj">
+      <Project>{A43B6518-C453-4692-B371-E942163AE34F}</Project>
+      <Name>BitPixel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
