@@ -22,9 +22,11 @@ namespace Game
 			_world.Terrain.GenerateChunk(1);
 			_world.Terrain.GenerateChunk(2);
 			_world.Terrain.GenerateChunk(3);
+
+			_worldRenderer = new WorldRenderer();
 		}
 
-		void OnRender(object sender, GameLoopEventArgs e)
+		private void OnRender(object sender, GameLoopEventArgs e)
 		{
 			_world.Render(_worldRenderer);
 		}
