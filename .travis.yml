@@ -17,7 +17,6 @@ before_install:
 
 script:
  - xbuild .travis.proj
- - gendarme assemblies "./Game/bin/Release/BitPixel.dll" "./Game/bin/Release/BitPixel.Graphics.dll" "./Game/bin/Release/BitPixel.World.dll"
  - sh -c "cd ./Game/bin/Release/ && zip -r ../../../BitPixel.zip ./*"
 
 deploy:
