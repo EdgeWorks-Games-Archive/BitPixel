@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BitPixel.Core")]
+[assembly: AssemblyTitle("BitPixel.Terrain")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BitPixel.Core")]
+[assembly: AssemblyProduct("BitPixel.Terrain")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e7405bd3-1bab-488e-a8bf-9de59500c0b7")]
+[assembly: Guid("eed47f42-70db-472b-a423-f05fb2175312")]
 
 // Version information for an assembly consists of the following four values:
 //

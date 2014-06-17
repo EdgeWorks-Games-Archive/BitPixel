@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitPixel", "BitPixel\BitPixel.csproj", "{0E65A733-29E4-4E23-8CF1-88102DB784EA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game", "Game\Game.csproj", "{0E65A733-29E4-4E23-8CF1-88102DB784EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitPixel.Tests", "BitPixel.Tests\BitPixel.Tests.csproj", "{1FA01144-F2AC-481D-BEDF-9E0305C352CD}"
 EndProject
@@ -16,6 +16,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		license.txt = license.txt
 		readme.md = readme.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitPixel", "BitPixel\BitPixel.csproj", "{A43B6518-C453-4692-B371-E942163AE34F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{D9956E14-6746-4374-82A3-D0C541DCE5F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{83376B9C-8E3C-485F-8D67-069031FCBE1A}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitPixel.World", "BitPixel.World\BitPixel.World.csproj", "{386249B7-A890-4D54-8705-B898CD9E6AB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitPixel.Graphics", "BitPixel.Graphics\BitPixel.Graphics.csproj", "{F1D59813-5675-42D7-AC1A-522EA5B17C23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,8 +46,26 @@ Global
 		{1FA01144-F2AC-481D-BEDF-9E0305C352CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FA01144-F2AC-481D-BEDF-9E0305C352CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FA01144-F2AC-481D-BEDF-9E0305C352CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A43B6518-C453-4692-B371-E942163AE34F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A43B6518-C453-4692-B371-E942163AE34F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A43B6518-C453-4692-B371-E942163AE34F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A43B6518-C453-4692-B371-E942163AE34F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{386249B7-A890-4D54-8705-B898CD9E6AB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{386249B7-A890-4D54-8705-B898CD9E6AB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{386249B7-A890-4D54-8705-B898CD9E6AB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{386249B7-A890-4D54-8705-B898CD9E6AB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1D59813-5675-42D7-AC1A-522EA5B17C23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1D59813-5675-42D7-AC1A-522EA5B17C23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1D59813-5675-42D7-AC1A-522EA5B17C23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1D59813-5675-42D7-AC1A-522EA5B17C23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1FA01144-F2AC-481D-BEDF-9E0305C352CD} = {D9956E14-6746-4374-82A3-D0C541DCE5F7}
+		{A43B6518-C453-4692-B371-E942163AE34F} = {D9956E14-6746-4374-82A3-D0C541DCE5F7}
+		{386249B7-A890-4D54-8705-B898CD9E6AB9} = {D9956E14-6746-4374-82A3-D0C541DCE5F7}
+		{F1D59813-5675-42D7-AC1A-522EA5B17C23} = {D9956E14-6746-4374-82A3-D0C541DCE5F7}
 	EndGlobalSection
 EndGlobal
