@@ -1,4 +1,4 @@
-﻿namespace BitPixel.Rendering
+﻿namespace BitPixel.Graphics
 {
 	public class RenderContext
 	{

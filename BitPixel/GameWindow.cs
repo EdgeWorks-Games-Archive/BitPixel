@@ -55,9 +55,9 @@ namespace BitPixel
 	{
 		public GameLoopEventArgs(TimeSpan delta)
 		{
-			Delta = delta;
+			DeltaTime = delta;
 		}
 
-		public TimeSpan Delta { get; private set; }
+		public TimeSpan DeltaTime { get; private set; }
 	}
 }

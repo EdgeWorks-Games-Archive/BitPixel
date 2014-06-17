@@ -52,6 +52,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BitPixel.Graphics\BitPixel.Graphics.csproj">
+      <Project>{f1d59813-5675-42d7-ac1a-522ea5b17c23}</Project>
+      <Name>BitPixel.Graphics</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BitPixel.World\BitPixel.World.csproj">
       <Project>{386249B7-A890-4D54-8705-B898CD9E6AB9}</Project>
       <Name>BitPixel.World</Name>

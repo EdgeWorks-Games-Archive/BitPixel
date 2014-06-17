@@ -7,8 +7,8 @@
     <ProjectGuid>{F1D59813-5675-42D7-AC1A-522EA5B17C23}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BitPixel.Rendering</RootNamespace>
-    <AssemblyName>BitPixel.Rendering</AssemblyName>
+    <RootNamespace>BitPixel.Graphics</RootNamespace>
+    <AssemblyName>BitPixel.Graphics</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,6 +41,13 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RenderContext.cs" />
+    <Compile Include="Renderers\WorldRenderer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BitPixel.World\BitPixel.World.csproj">
+      <Project>{386249b7-a890-4d54-8705-b898cd9e6ab9}</Project>
+      <Name>BitPixel.World</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
