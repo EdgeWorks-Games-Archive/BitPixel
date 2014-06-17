@@ -1,21 +1,23 @@
-## BitPixel ##
+[![Build Status](https://travis-ci.org/EdgeWorks-Games/BitPixel.svg?branch=develop)](https://travis-ci.org/EdgeWorks-Games/BitPixel)
+
+# BitPixel #
 BitPixel is an open source 2D tile based game engine focused on sidescrolling and movable tiled structures.
 
-### Building ###
+## Building ##
 1. Download the version of BitPixel you want to build.
 2. [Allow NuGet to download missing packages during build.](http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages)
 3. Build the engine from Visual Studio.
 
-### Branches ###
+## Branches ##
 This project uses [Git Flow](http://nvie.com/posts/a-successful-git-branching-model/).
 If you are looking for the latest develop version, look at the develop branch.
 The latest stable version is the master branch.
 
-### Contributing ###
+## Contributing ##
 When contributing to this project, you transfer full rights to your contributed work to
 EdgeWorks Games(TM). You can not attach a license to work you contribute.
 
-### Releasing your Game ###
+## Releasing your Game ##
 If you've built a game on BitPixel and want to release it, you need to be aware of the license
 attached to BitPixel. You must make the source code available to the users of the program as
 described in the GPL, and they must be allowed to redistribute and modify it as described in
