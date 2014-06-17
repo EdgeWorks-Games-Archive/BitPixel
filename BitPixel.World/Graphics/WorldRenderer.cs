@@ -1,11 +1,14 @@
-﻿using BitPixel.World;
-using OpenTK.Graphics.OpenGL;
+﻿using OpenTK.Graphics.OpenGL;
 
-namespace BitPixel.Graphics.Renderers
+namespace BitPixel.World.Graphics
 {
 	public class WorldRenderer : IWorldRenderer
 	{
-		public void Render(Terrain terrain)
+		public void RenderRectangle()
+		{
+		}
+
+		public void Render(Terrain render)
 		{
 			GL.Begin(PrimitiveType.Triangles);
 

@@ -47,13 +47,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RenderContext.cs" />
-    <Compile Include="Renderers\WorldRenderer.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BitPixel.World\BitPixel.World.csproj">
-      <Project>{386249b7-a890-4d54-8705-b898cd9e6ab9}</Project>
-      <Name>BitPixel.World</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
