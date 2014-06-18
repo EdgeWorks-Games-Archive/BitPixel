@@ -2,6 +2,6 @@
 {
 	public interface IWorldRenderer
 	{
-		void Render(Terrain render);
+		void Render(Terrain terrain);
 	}
 }

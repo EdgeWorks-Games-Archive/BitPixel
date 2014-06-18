@@ -17,7 +17,7 @@ namespace BitPixel.World
 			// These properties will have to be fixed always not null.
 			// They can not be reset since they depend on eachother.
 			// For example, the Structures' pathfinding graphs depend on the Terrain.
-			Terrain = new Terrain();
+			Terrain = new Terrain(seed);
 
 			Trace.TraceInformation("Finished generating world.");
 		}

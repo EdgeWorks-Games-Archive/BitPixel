@@ -1,16 +1,33 @@
-﻿namespace BitPixel.World
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using SharpNoise.Modules;
+
+namespace BitPixel.World
 {
 	public class Terrain
 	{
-		private TerrainLine[] _heights;
+		private readonly TerrainSegment[] _segments;
 
-		public Terrain()
+		public Terrain(int seed)
 		{
-			_heights = new TerrainLine[20];
-			for (var i = 0; i < _heights.Length; i++)
+			var perlin = new Perlin
 			{
-				_heights[i] = new TerrainLine(20);
+				Seed = seed
+			};
+
+			_segments = new TerrainSegment[880];
+			for (var x = 0; x < _segments.Length; x++)
+			{
+				var heightVariation = perlin.GetValue(x*0.01f, 0, 0);
+				var height = 10 + (heightVariation * 10);
+				_segments[x] = new TerrainSegment((float)height);
+				Trace.TraceInformation("Segment: " + height);
 			}
+		}
+
+		public IEnumerable<TerrainSegment> TerrainSegments
+		{
+			get { return _segments; }
 		}
 
 		public void Render(IWorldRenderer renderer)

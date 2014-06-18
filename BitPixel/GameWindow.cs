@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using OpenTK.Graphics;
+using OpenTK.Graphics.OpenGL4;
 
 namespace BitPixel
 {
@@ -17,6 +19,9 @@ namespace BitPixel
 		void OnRender(object sender, OpenTK.FrameEventArgs e)
 		{
 			var time = TimeSpan.FromSeconds(e.Time);
+
+			GL.ClearColor(Color.Black);
+			GL.Clear(ClearBufferMask.ColorBufferBit);
 
 			Render(this, new GameLoopEventArgs(time));
 
