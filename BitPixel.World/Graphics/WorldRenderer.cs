@@ -4,8 +4,6 @@ namespace BitPixel.World.Graphics
 {
 	public class WorldRenderer : IWorldRenderer
 	{
-		private float _delta;
-
 		public void Render(Terrain terrain)
 		{
 			const float ratio = 720.0f / 1280.0f;
@@ -15,7 +13,7 @@ namespace BitPixel.World.Graphics
 			GL.Ortho(-40, 40, -40 * ratio, 40 * ratio, 1, -1);
 			GL.MatrixMode(MatrixMode.Modelview);
 			GL.LoadIdentity();
-			GL.Translate(-20 - _delta, -20, 0);
+			GL.Translate(-50, -20, 0);
 
 			GL.Color3(1.0, 1.0, 1.0);
 			GL.Begin(PrimitiveType.Quads);
@@ -30,8 +28,6 @@ namespace BitPixel.World.Graphics
 				x++;
 			}
 			GL.End();
-
-			_delta += 0.1f;
 		}
 	}
 }
