@@ -15,7 +15,7 @@ namespace Game
 			// Set up the game loop
 			_gameWindow = new GameWindow();
 			_gameWindow.Render += OnRender;
-
+			
 			// Set up a test world
 			_world = new World();
 
