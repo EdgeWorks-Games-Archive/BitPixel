@@ -1,12 +1,10 @@
-﻿using OpenTK.Graphics.OpenGL;
-
-namespace BitPixel.World.Graphics
+﻿namespace BitPixel.World.Graphics
 {
 	public class WorldRenderer : IWorldRenderer
 	{
 		public void Render(Terrain terrain)
 		{
-			const float ratio = 720.0f / 1280.0f;
+			/*const float ratio = 720.0f / 1280.0f;
 
 			GL.MatrixMode(MatrixMode.Projection);
 			GL.LoadIdentity();
@@ -27,7 +25,7 @@ namespace BitPixel.World.Graphics
 
 				x++;
 			}
-			GL.End();
+			GL.End();*/
 		}
 	}
 }
