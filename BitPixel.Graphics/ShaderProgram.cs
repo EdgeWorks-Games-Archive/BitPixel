@@ -13,6 +13,17 @@ namespace BitPixel.Graphics
 
 			AttachShader(_program, vertSource, ShaderType.VertexShader);
 			AttachShader(_program, fragSource, ShaderType.FragmentShader);
+
+			GL.LinkProgram(_program);
+
+			int linkStatus;
+			GL.GetProgram(_program, GetProgramParameterName.LinkStatus, out linkStatus);
+			if (linkStatus != 1)
+			{
+				throw new ProgramException(
+					"Shader Program failed to link!",
+					GL.GetProgramInfoLog(_program));
+			}
 		}
 
 		public void Dispose()
@@ -42,7 +53,11 @@ namespace BitPixel.Graphics
 			GL.GetShader(shader, ShaderParameter.CompileStatus, out compileStatus);
 			if (compileStatus != 1)
 			{
-				throw new ShaderException("Shader failed to compile!", GL.GetShaderInfoLog(shader));
+				throw new ShaderException(
+					"Shader failed to compile!",
+					GL.GetShaderInfoLog(shader),
+					source,
+					type);
 			}
 
 			GL.AttachShader(program, shader);
