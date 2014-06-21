@@ -4,8 +4,10 @@
 	{
 		private static void Main()
 		{
-			var game = new Game();
-			game.Run();
+			using (var game = new Game())
+			{
+				game.Run();
+			}
 		}
 	}
 }

@@ -1,9 +1,22 @@
-﻿namespace BitPixel.World.Graphics
+﻿using BitPixel.Graphics;
+
+namespace BitPixel.World.Graphics
 {
 	public class WorldRenderer : IWorldRenderer
 	{
+		private readonly ShaderProgram _shaderProgram;
+
+		public WorldRenderer(ShaderProgram shaderProgram)
+		{
+			_shaderProgram = shaderProgram;
+		}
+
 		public void Render(Terrain terrain)
 		{
+			using (_shaderProgram.Use())
+			{
+			}
+
 			/*const float ratio = 720.0f / 1280.0f;
 
 			GL.MatrixMode(MatrixMode.Projection);

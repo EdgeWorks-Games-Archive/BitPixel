@@ -1,13 +1,17 @@
-﻿using BitPixel;
+﻿using System;
+using BitPixel;
+using BitPixel.Graphics;
 using BitPixel.World;
 using BitPixel.World.Graphics;
 
 namespace Game
 {
-	internal class Game
+	internal class Game : IDisposable
 	{
 		private readonly GameWindow _gameWindow;
 		private readonly WorldRenderer _renderer;
+
+		private readonly ShaderProgram _shaderProgram;
 		private readonly World _world;
 
 		public Game()
@@ -15,11 +19,20 @@ namespace Game
 			// Set up the game loop
 			_gameWindow = new GameWindow();
 			_gameWindow.Render += OnRender;
-			
+
+			// Set up the rendering data
+			_shaderProgram = new ShaderProgram(
+				"void main() { gl_Position = gl_Vertex; }",
+				"void main() { gl_FragColor = vec4( 1.0, 0.0, 0.0, 1.0 ); }");
+			_renderer = new WorldRenderer(_shaderProgram);
+
 			// Set up a test world
 			_world = new World();
+		}
 
-			_renderer = new WorldRenderer();
+		public void Dispose()
+		{
+			_shaderProgram.Dispose();
 		}
 
 		private void OnRender(object sender, GameLoopEventArgs e)
