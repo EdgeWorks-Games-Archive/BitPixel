@@ -5,6 +5,11 @@ namespace BitPixel.Graphics
 {
 	public class ProgramException : Exception, ISerializable
 	{
+		public ProgramException(string message)
+			: base(message)
+		{
+		}
+
 		public ProgramException(string message, string programLog)
 			: base(message)
 		{

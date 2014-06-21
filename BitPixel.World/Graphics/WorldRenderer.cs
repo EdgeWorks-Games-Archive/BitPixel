@@ -1,4 +1,5 @@
 ﻿using BitPixel.Graphics;
+using OpenTK;
 using OpenTK.Graphics.OpenGL;
 
 namespace BitPixel.World.Graphics
@@ -11,30 +12,21 @@ namespace BitPixel.World.Graphics
 		{
 			_shaderProgram = shaderProgram;
 		}
-		
+
 		public void Render(Terrain terrain)
 		{
 			_shaderProgram.Use();
-			
-			const float ratio = 720.0f / 1280.0f;
 
-			GL.MatrixMode(MatrixMode.Projection);
-			GL.LoadIdentity();
-			GL.Ortho(-40, 40, -40 * ratio, 40 * ratio, 1, -1);
+			const float ratio = 720.0f/1280.0f;
 
-			GL.MatrixMode(MatrixMode.Modelview);
-			GL.LoadIdentity();
+			_shaderProgram.ProjectionMatrix =
+				Matrix4.Identity*
+				Matrix4.CreateOrthographic(80, 80*ratio, 1, -1)*
+				Matrix4.CreateTranslation(-40, -40, 0);
+			_shaderProgram.ModelViewMatrix =
+				Matrix4.Identity*
+				Matrix4.CreateTranslation(-50, -20, 0);
 
-			GL.Begin(PrimitiveType.Quads);
-
-			GL.Color3(0f, 1f, 1f);
-			GL.Vertex2(-0.5, -0.5);
-			GL.Vertex2(0.5, -0.5);
-			GL.Vertex2(0.5, 0.5);
-			GL.Vertex2(-0.5, 0.5);
-			GL.End();
-
-			/*GL.Translate(-50, -20, 0);
 			GL.Color3(1.0, 1.0, 1.0);
 			GL.Begin(PrimitiveType.Quads);
 			var x = 0;
@@ -47,7 +39,7 @@ namespace BitPixel.World.Graphics
 
 				x++;
 			}
-			GL.End();*/
+			GL.End();
 		}
 	}
 }

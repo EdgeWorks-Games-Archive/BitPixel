@@ -53,7 +53,7 @@
     <None Include="Shaders\basic.vert.glsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Shaders\white.frag.glsl">
+    <None Include="Shaders\color.frag.glsl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
