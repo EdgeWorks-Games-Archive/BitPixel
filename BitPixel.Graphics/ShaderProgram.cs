@@ -32,9 +32,9 @@ namespace BitPixel.Graphics
 			GC.SuppressFinalize(this);
 		}
 
-		public ShaderActivationLifetime Use()
+		public void Use()
 		{
-			return new ShaderActivationLifetime(_program);
+			GL.UseProgram(_program);
 		}
 
 		~ShaderProgram()
@@ -61,19 +61,6 @@ namespace BitPixel.Graphics
 			}
 
 			GL.AttachShader(program, shader);
-		}
-
-		public sealed class ShaderActivationLifetime : IDisposable
-		{
-			internal ShaderActivationLifetime(int programId)
-			{
-				GL.UseProgram(programId);
-			}
-
-			public void Dispose()
-			{
-				GL.UseProgram(0);
-			}
 		}
 	}
 }

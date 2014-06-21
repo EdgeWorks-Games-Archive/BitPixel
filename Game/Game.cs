@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using BitPixel;
 using BitPixel.Graphics;
 using BitPixel.World;
@@ -23,7 +24,7 @@ namespace Game
 			// Set up the rendering data
 			_shaderProgram = new ShaderProgram(
 				"void main() { gl_Position = gl_Vertex; }",
-				"void main() { gl_FragColor = vec4( 1.0, 0.0, 0.0, 1.0 ); }");
+				File.ReadAllText("./Shaders/white.frag.glsl"));
 			_renderer = new WorldRenderer(_shaderProgram);
 
 			// Set up a test world
