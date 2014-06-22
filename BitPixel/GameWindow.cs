@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
+using OpenTK;
 using OpenTK.Graphics;
+using OpenTK.Graphics.OpenGL4;
 
 namespace BitPixel
 {
@@ -10,6 +13,7 @@ namespace BitPixel
 
 		public GameWindow()
 		{
+			_gameWindow.WindowBorder = WindowBorder.Fixed;
 			_gameWindow.UpdateFrame += (s, e) => Update(this, new GameLoopEventArgs(TimeSpan.FromSeconds(e.Time)));
 			_gameWindow.RenderFrame += OnRender;
 		}
@@ -17,6 +21,9 @@ namespace BitPixel
 		void OnRender(object sender, OpenTK.FrameEventArgs e)
 		{
 			var time = TimeSpan.FromSeconds(e.Time);
+
+			GL.ClearColor(Color.Black);
+			GL.Clear(ClearBufferMask.ColorBufferBit);
 
 			Render(this, new GameLoopEventArgs(time));
 

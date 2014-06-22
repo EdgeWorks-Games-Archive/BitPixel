@@ -1,14 +1,20 @@
-﻿using BitPixel;
+﻿using System;
+using System.Diagnostics;
+using System.IO;
+using BitPixel;
+using BitPixel.Graphics;
 using BitPixel.World;
-using BitPixel.Graphics.Renderers;
+using BitPixel.World.Graphics;
 
 namespace Game
 {
-	internal class Game
+	internal class Game : IDisposable
 	{
 		private readonly GameWindow _gameWindow;
+		private readonly WorldRenderer _renderer;
+
+		private readonly ShaderProgram _shaderProgram;
 		private readonly World _world;
-		private readonly WorldRenderer _worldRenderer;
 
 		public Game()
 		{
@@ -16,19 +22,24 @@ namespace Game
 			_gameWindow = new GameWindow();
 			_gameWindow.Render += OnRender;
 
+			// Set up the rendering data
+			_shaderProgram = new ShaderProgram(
+				File.ReadAllText("./Shaders/basic.vert.glsl"),
+				File.ReadAllText("./Shaders/color.frag.glsl"));
+			_renderer = new WorldRenderer(_shaderProgram);
+
 			// Set up a test world
 			_world = new World();
-			_world.Terrain.GenerateChunk(0);
-			_world.Terrain.GenerateChunk(1);
-			_world.Terrain.GenerateChunk(2);
-			_world.Terrain.GenerateChunk(3);
+		}
 
-			_worldRenderer = new WorldRenderer();
+		public void Dispose()
+		{
+			_shaderProgram.Dispose();
 		}
 
 		private void OnRender(object sender, GameLoopEventArgs e)
 		{
-			_world.Render(_worldRenderer);
+			_world.Render(_renderer);
 		}
 
 		public void Run()
