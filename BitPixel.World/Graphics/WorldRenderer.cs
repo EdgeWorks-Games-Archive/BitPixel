@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using BitPixel.Graphics;
+﻿using BitPixel.Graphics;
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
 
@@ -22,14 +21,16 @@ namespace BitPixel.World.Graphics
 
 			_shaderProgram.ProjectionMatrix = Matrix4.CreateOrthographic(80, 80*ratio, 1, -1);
 			_shaderProgram.ModelViewMatrix = Matrix4.Identity;
-			
-			using (var vertexBuffer = new VertexBuffer(new[]
+
+			var vertexData = new[]
 			{
 				// position
 				-1f, -1f,
 				1f, -1f,
 				-1f, 1f,
-			}))
+			};
+
+			using (var vertexBuffer = new VertexBuffer(vertexData))
 			{
 				// Enable the attribute arrays so we can send attributes
 				// TODO: Improve the entire system of sending vertex attributes so it's a lot safer
