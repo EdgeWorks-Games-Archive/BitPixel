@@ -50,6 +50,7 @@
     <Compile Include="ProgramException.cs" />
     <Compile Include="ShaderException.cs" />
     <Compile Include="ShaderProgram.cs" />
+    <Compile Include="VertexBuffer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

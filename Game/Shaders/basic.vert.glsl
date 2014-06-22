@@ -5,7 +5,7 @@ uniform mat4 ProjectionMatrix;
 uniform mat4 ModelViewMatrix;
 
 // Input vertices
-in vec2 VertexPos2D;
+layout(location = 0) in vec2 VertexPos2D;
 
 void main()
 {

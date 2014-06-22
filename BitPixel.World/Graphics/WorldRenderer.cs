@@ -1,6 +1,7 @@
-﻿using BitPixel.Graphics;
+﻿using System.Diagnostics;
+using BitPixel.Graphics;
 using OpenTK;
-using OpenTK.Graphics.OpenGL;
+using OpenTK.Graphics.OpenGL4;
 
 namespace BitPixel.World.Graphics
 {
@@ -19,15 +20,40 @@ namespace BitPixel.World.Graphics
 
 			const float ratio = 720.0f/1280.0f;
 
-			_shaderProgram.ProjectionMatrix =
-				Matrix4.Identity*
-				Matrix4.CreateOrthographic(80, 80*ratio, 1, -1)*
-				Matrix4.CreateTranslation(-40, -40, 0);
-			_shaderProgram.ModelViewMatrix =
-				Matrix4.Identity*
-				Matrix4.CreateTranslation(-50, -20, 0);
+			_shaderProgram.ProjectionMatrix = Matrix4.CreateOrthographic(80, 80*ratio, 1, -1);
+			_shaderProgram.ModelViewMatrix = Matrix4.Identity;
+			
+			using (var vertexBuffer = new VertexBuffer(new[]
+			{
+				// position
+				-1f, -1f,
+				1f, -1f,
+				-1f, 1f,
+			}))
+			{
+				// Enable the attribute arrays so we can send attributes
+				// TODO: Improve the entire system of sending vertex attributes so it's a lot safer
+				GL.EnableVertexAttribArray(0);
 
-			GL.Color3(1.0, 1.0, 1.0);
+				vertexBuffer.Bind();
+
+				// Set the position attribute pointer
+				GL.VertexAttribPointer(
+					0, // Location
+					2, // Size
+					VertexAttribPointerType.Float, // Type
+					false, // Normalized
+					2*sizeof (float), // Offset between values
+					0); // Start offset
+
+				// And finally, draw
+				GL.DrawArrays(PrimitiveType.Triangles, 0, 3);
+
+				// Clean up
+				GL.DisableVertexAttribArray(0);
+			}
+
+			/*GL.Color3(1.0, 1.0, 1.0);
 			GL.Begin(PrimitiveType.Quads);
 			var x = 0;
 			foreach (var segment in terrain.TerrainSegments)
@@ -39,7 +65,7 @@ namespace BitPixel.World.Graphics
 
 				x++;
 			}
-			GL.End();
+			GL.End();*/
 		}
 	}
 }
