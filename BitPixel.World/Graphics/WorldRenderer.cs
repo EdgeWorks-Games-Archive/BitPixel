@@ -1,18 +1,19 @@
 ﻿using System;
-using System.Diagnostics;
 using BitPixel.Graphics;
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
 
 namespace BitPixel.World.Graphics
 {
-	public class WorldRenderer : IWorldRenderer
+	public sealed class WorldRenderer : IWorldRenderer, IDisposable
 	{
 		private readonly ShaderProgram _shaderProgram;
+		private readonly VertexBuffer _vertexBuffer;
 
 		public WorldRenderer(ShaderProgram shaderProgram)
 		{
 			_shaderProgram = shaderProgram;
+			_vertexBuffer = new VertexBuffer(BufferUsageHint.StreamDraw);
 		}
 
 		public void Render(Terrain terrain)
@@ -49,29 +50,33 @@ namespace BitPixel.World.Graphics
 				x++;
 			}
 
-			using (var vertexBuffer = new VertexBuffer(vertexData))
-			{
-				// Enable the attribute arrays so we can send attributes
-				// TODO: Improve the entire system of sending vertex attributes so it's a lot safer
-				GL.EnableVertexAttribArray(0);
+			_vertexBuffer.UpdateData(vertexData);
 
-				vertexBuffer.Bind();
+			// Enable the attribute arrays so we can send attributes
+			// TODO: Improve the entire system of sending vertex attributes so it's a lot safer
+			GL.EnableVertexAttribArray(0);
 
-				// Set the position attribute pointer
-				GL.VertexAttribPointer(
-					0, // Location
-					2, // Size
-					VertexAttribPointerType.Float, // Type
-					false, // Normalized
-					Vector2.SizeInBytes, // Offset between values
-					0); // Start offset
+			_vertexBuffer.Bind();
 
-				// And finally, draw
-				GL.DrawArrays(PrimitiveType.Triangles, 0, vertexData.Length);
+			// Set the position attribute pointer
+			GL.VertexAttribPointer(
+				0, // Location
+				2, // Size
+				VertexAttribPointerType.Float, // Type
+				false, // Normalized
+				Vector2.SizeInBytes, // Offset between values
+				0); // Start offset
 
-				// Clean up
-				GL.DisableVertexAttribArray(0);
-			}
+			// And finally, draw
+			GL.DrawArrays(PrimitiveType.Triangles, 0, vertexData.Length);
+
+			// Clean up
+			GL.DisableVertexAttribArray(0);
+		}
+
+		public void Dispose()
+		{
+			_vertexBuffer.Dispose();
 		}
 	}
 }

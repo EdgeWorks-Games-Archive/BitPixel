@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using BitPixel;
 using BitPixel.Graphics;
@@ -35,6 +34,7 @@ namespace Game
 		public void Dispose()
 		{
 			_shaderProgram.Dispose();
+			_renderer.Dispose();
 		}
 
 		private void OnRender(object sender, GameLoopEventArgs e)
