@@ -21,7 +21,7 @@ namespace BitPixel.World.Graphics
 			const float ratio = 720.0f/1280.0f;
 
 			_shaderProgram.ProjectionMatrix = Matrix4.CreateOrthographic(80, 80*ratio, 1, -1);
-			_shaderProgram.ModelViewMatrix = Matrix4.Identity;
+			_shaderProgram.ModelViewMatrix = Matrix4.Identity * Matrix4.CreateTranslation(-40, -20, 0);
 
 			const int quadMemSize = 2*3*2; // 2 values per vertex, 3 vertices per triangle, 2 triangles per quad
 			var vertexData = new float[terrain.TerrainSegments.Count * quadMemSize];
