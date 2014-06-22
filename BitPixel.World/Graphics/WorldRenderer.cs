@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using BitPixel.Graphics;
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
@@ -23,9 +24,9 @@ namespace BitPixel.World.Graphics
 			_shaderProgram.ProjectionMatrix = Matrix4.CreateOrthographic(80, 80*ratio, 1, -1);
 			_shaderProgram.ModelViewMatrix = Matrix4.Identity * Matrix4.CreateTranslation(-40, -20, 0);
 
-			const int quadMemSize = 2*3*2; // 2 values per vertex, 3 vertices per triangle, 2 triangles per quad
-			var vertexData = new float[terrain.TerrainSegments.Count * quadMemSize];
-
+			const int quadMemSize = 3*2; // 3 vertices per triangle, 2 triangles per quad
+			var vertexData = new Vector2[terrain.TerrainSegments.Count * quadMemSize];
+			
 			var x = 0;
 			foreach (var segment in terrain.TerrainSegments)
 			{
@@ -34,26 +35,16 @@ namespace BitPixel.World.Graphics
 				// Triangle 1
 				//  /|
 				// /_|
-				vertexData[arrayOffset] = x;
-				vertexData[arrayOffset + 1] = 0;
-
-				vertexData[arrayOffset + 2] = x + 1;
-				vertexData[arrayOffset + 3] = 0;
-
-				vertexData[arrayOffset + 4] = x + 1;
-				vertexData[arrayOffset + 5] = segment.Height;
+				vertexData[arrayOffset + 0] = new Vector2(x, 0);
+				vertexData[arrayOffset + 1] = new Vector2(x + 1, 0);
+				vertexData[arrayOffset + 2] = new Vector2(x + 1, segment.Height);
 
 				// Triangle 2
 				// | /
 				// |/
-				vertexData[arrayOffset + 6] = x;
-				vertexData[arrayOffset + 7] = 0;
-
-				vertexData[arrayOffset + 8] = x + 1;
-				vertexData[arrayOffset + 9] = segment.Height;
-
-				vertexData[arrayOffset + 10] = x;
-				vertexData[arrayOffset + 11] = segment.Height;
+				vertexData[arrayOffset + 3] = new Vector2(x, 0);
+				vertexData[arrayOffset + 4] = new Vector2(x + 1, segment.Height);
+				vertexData[arrayOffset + 5] = new Vector2(x, segment.Height);
 
 				x++;
 			}
@@ -72,7 +63,7 @@ namespace BitPixel.World.Graphics
 					2, // Size
 					VertexAttribPointerType.Float, // Type
 					false, // Normalized
-					2*sizeof (float), // Offset between values
+					Vector2.SizeInBytes, // Offset between values
 					0); // Start offset
 
 				// And finally, draw

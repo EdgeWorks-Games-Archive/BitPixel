@@ -1,4 +1,5 @@
 ﻿using System;
+using OpenTK;
 using OpenTK.Graphics.OpenGL4;
 
 namespace BitPixel.Graphics
@@ -7,7 +8,7 @@ namespace BitPixel.Graphics
 	{
 		private readonly int _vertexBuffer;
 
-		public VertexBuffer(float[] data)
+		public VertexBuffer(Vector2[] data)
 		{
 			// Create the new buffer
 			_vertexBuffer = GL.GenBuffer();
@@ -16,7 +17,7 @@ namespace BitPixel.Graphics
 			GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBuffer);
 			GL.BufferData(
 				BufferTarget.ArrayBuffer,
-				new IntPtr(sizeof(float) * data.Length), data,
+				new IntPtr(Vector2.SizeInBytes * data.Length), data,
 				BufferUsageHint.DynamicDraw);
 			// TODO: Allow different usage hints.
 			// DynamicDraw is draw a few times.
