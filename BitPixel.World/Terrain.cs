@@ -25,7 +25,7 @@ namespace BitPixel.World
 			Trace.TraceInformation("Generated {0} terrain segments!", _segments.Length);
 		}
 
-		public IEnumerable<TerrainSegment> TerrainSegments
+		public ICollection<TerrainSegment> TerrainSegments
 		{
 			get { return _segments; }
 		}

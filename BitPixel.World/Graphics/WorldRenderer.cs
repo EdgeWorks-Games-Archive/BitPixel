@@ -1,4 +1,5 @@
-﻿using BitPixel.Graphics;
+﻿using System;
+using BitPixel.Graphics;
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
 
@@ -22,13 +23,40 @@ namespace BitPixel.World.Graphics
 			_shaderProgram.ProjectionMatrix = Matrix4.CreateOrthographic(80, 80*ratio, 1, -1);
 			_shaderProgram.ModelViewMatrix = Matrix4.Identity;
 
-			var vertexData = new[]
+			const int quadMemSize = 2*3*2; // 2 values per vertex, 3 vertices per triangle, 2 triangles per quad
+			var vertexData = new float[terrain.TerrainSegments.Count * quadMemSize];
+
+			var x = 0;
+			foreach (var segment in terrain.TerrainSegments)
 			{
-				// position
-				-1f, -1f,
-				1f, -1f,
-				-1f, 1f,
-			};
+				var arrayOffset = x*quadMemSize;
+
+				// Triangle 1
+				//  /|
+				// /_|
+				vertexData[arrayOffset] = x;
+				vertexData[arrayOffset + 1] = 0;
+
+				vertexData[arrayOffset + 2] = x + 1;
+				vertexData[arrayOffset + 3] = 0;
+
+				vertexData[arrayOffset + 4] = x + 1;
+				vertexData[arrayOffset + 5] = segment.Height;
+
+				// Triangle 2
+				// | /
+				// |/
+				vertexData[arrayOffset + 6] = x;
+				vertexData[arrayOffset + 7] = 0;
+
+				vertexData[arrayOffset + 8] = x + 1;
+				vertexData[arrayOffset + 9] = segment.Height;
+
+				vertexData[arrayOffset + 10] = x;
+				vertexData[arrayOffset + 11] = segment.Height;
+
+				x++;
+			}
 
 			using (var vertexBuffer = new VertexBuffer(vertexData))
 			{
@@ -48,25 +76,11 @@ namespace BitPixel.World.Graphics
 					0); // Start offset
 
 				// And finally, draw
-				GL.DrawArrays(PrimitiveType.Triangles, 0, 3);
+				GL.DrawArrays(PrimitiveType.Triangles, 0, vertexData.Length);
 
 				// Clean up
 				GL.DisableVertexAttribArray(0);
 			}
-
-			/*GL.Color3(1.0, 1.0, 1.0);
-			GL.Begin(PrimitiveType.Quads);
-			var x = 0;
-			foreach (var segment in terrain.TerrainSegments)
-			{
-				GL.Vertex2(x, 0);
-				GL.Vertex2(x + 1, 0);
-				GL.Vertex2(x + 1, segment.Height);
-				GL.Vertex2(x, segment.Height);
-
-				x++;
-			}
-			GL.End();*/
 		}
 	}
 }
