@@ -33,7 +33,7 @@ namespace BitPixel.Graphics
 
 			// Set up shader uniforms
 			_projectionUniform = GL.GetUniformLocation(_program, "ProjectionMatrix");
-			_modelViewUniform = GL.GetUniformLocation(_program, "ModelViewMatrix");
+			_modelViewUniform = GL.GetUniformLocation(_program, "ModelViewOffset");
 
 			if (_projectionUniform == -1 || _modelViewUniform == -1)
 			{
@@ -53,11 +53,11 @@ namespace BitPixel.Graphics
 			}
 		}
 
-		public Matrix4 ModelViewMatrix
+		public Vector2 ModelViewMatrix
 		{
 			set
 			{
-				GL.UniformMatrix4(_modelViewUniform, false, ref value);
+				GL.Uniform2(_modelViewUniform, ref value);
 			}
 		}
 

@@ -13,6 +13,9 @@ namespace BitPixel.World.Graphics
 		public WorldRenderer(ShaderProgram shaderProgram)
 		{
 			_shaderProgram = shaderProgram;
+
+			// This is an area where performance could be improved.
+			// Instead perhaps store chunk meshes as StaticDraws in the Terrain.
 			_vertexBuffer = new VertexBuffer(BufferUsageHint.StreamDraw);
 		}
 
@@ -23,7 +26,7 @@ namespace BitPixel.World.Graphics
 			const float ratio = 720.0f/1280.0f;
 
 			_shaderProgram.ProjectionMatrix = Matrix4.CreateOrthographic(80, 80*ratio, 1, -1);
-			_shaderProgram.ModelViewMatrix = Matrix4.Identity * Matrix4.CreateTranslation(-40, -20, 0);
+			_shaderProgram.ModelViewMatrix = new Vector2(-50, -20);
 
 			const int quadMemSize = 3*2; // 3 vertices per triangle, 2 triangles per quad
 			var vertexData = new Vector2[terrain.TerrainSegments.Count * quadMemSize];
@@ -50,7 +53,7 @@ namespace BitPixel.World.Graphics
 				x++;
 			}
 
-			_vertexBuffer.UpdateData(vertexData);
+			_vertexBuffer.ResetData(vertexData);
 
 			// Enable the attribute arrays so we can send attributes
 			// TODO: Improve the entire system of sending vertex attributes so it's a lot safer

@@ -21,7 +21,7 @@ namespace BitPixel.Graphics
 		public VertexBuffer(BufferUsageHint usageHint, Vector2[] data)
 			: this(usageHint)
 		{
-			UpdateData(data);
+			ResetData(data);
 		}
 
 		~VertexBuffer()
@@ -30,15 +30,27 @@ namespace BitPixel.Graphics
 			Dispose();
 		}
 
-		public void UpdateData(Vector2[] data)
+		public void ResetData(Vector2[] data)
 		{
 			// TODO: Make updating data part of a usage lifetime object
+
 			// Bind it and set the data
 			GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBuffer);
 			GL.BufferData(
 				BufferTarget.ArrayBuffer,
 				new IntPtr(Vector2.SizeInBytes * data.Length), data,
 				_usageHint);
+		}
+
+		public void OverwriteData(Vector2[] data)
+		{
+			// TODO: Make updating data part of a usage lifetime object
+
+			// Bind it and set the data
+			GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBuffer);
+			GL.BufferSubData(
+				BufferTarget.ArrayBuffer, new IntPtr(0),
+				new IntPtr(Vector2.SizeInBytes * data.Length), data);
 		}
 
 		public void Dispose()
