@@ -22,13 +22,24 @@ namespace BitPixel.Graphics
 			// Report any errors found
 			int linkStatus;
 			GL.GetProgram(_program, GetProgramParameterName.LinkStatus, out linkStatus);
+			var log = GL.GetProgramInfoLog(_program);
 			if (linkStatus != 1)
 			{
 				var message = string.Format("Shader program {0} failed to link!", _program);
-				Trace.TraceWarning(message);
-				throw new ProgramException(
-					message,
-					GL.GetProgramInfoLog(_program));
+				Trace.TraceError(message);
+				throw new ProgramException(message, log);
+			}
+
+			// If there's anything in the log, it might be a warning
+			if (log != "")
+			{
+				Trace.TraceWarning("Shader program {0} compiled with warnings:", _program);
+				Trace.Indent();
+				foreach (var logLine in log.Split('\n'))
+				{
+					Trace.TraceWarning(logLine);
+				}
+				Trace.Unindent();
 			}
 
 			// Set up shader uniforms
@@ -38,7 +49,7 @@ namespace BitPixel.Graphics
 			if (_projectionUniform == -1 || _modelViewUniform == -1)
 			{
 				var message = string.Format("Shader program {0} does not contain required uniforms!", _program);
-				Trace.TraceWarning(message);
+				Trace.TraceError(message);
 				throw new ProgramException(message);
 			}
 

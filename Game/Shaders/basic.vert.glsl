@@ -4,11 +4,11 @@
 uniform mat4 ProjectionMatrix;
 uniform vec2 ModelViewOffset;
 
-// Input vertices
-layout(location = 0) in vec2 VertexPos2D;
+// Input Vertices
+layout(location = 0) in vec2 Vertex;
 
 void main()
 {
 	// Process vertex
-	gl_Position = ProjectionMatrix * vec4(VertexPos2D + ModelViewOffset, 0.0, 1.0);
+	gl_Position = ProjectionMatrix * vec4(Vertex + ModelViewOffset, 0.0, 1.0);
 }

@@ -19,7 +19,7 @@ namespace BitPixel.World
 			// They can not be reset since they depend on eachother.
 			// For example, the Structures' pathfinding graphs depend on the Terrain.
 			Terrain = new Terrain(seed);
-
+			
 			Trace.Unindent();
 			Trace.TraceInformation("Finished generating world.");
 		}
