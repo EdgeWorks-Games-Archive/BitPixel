@@ -30,8 +30,6 @@ namespace Game
 
 			// Set up a test world
 			_world = new World();
-
-			throw new Exception("Blah blah", new Exception("Double blah"));
 		}
 
 		public void Dispose()
