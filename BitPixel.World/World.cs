@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using BitPixel.Graphics;
 
 namespace BitPixel.World
 {
@@ -26,9 +27,9 @@ namespace BitPixel.World
 
 		public Terrain Terrain { get; private set; }
 
-		public void Render(IWorldRenderer renderer)
+		public void Render(IWorldRenderer renderer, RenderContext context)
 		{
-			Terrain.Render(renderer);
+			Terrain.Render(renderer, context);
 		}
 	}
 }

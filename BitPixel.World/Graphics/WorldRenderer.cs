@@ -19,14 +19,12 @@ namespace BitPixel.World.Graphics
 			_vertexBuffer = new VertexBuffer(BufferUsageHint.StreamDraw);
 		}
 
-		public void Render(Terrain terrain)
+		public void Render(Terrain terrain, RenderContext context)
 		{
 			_shaderProgram.Use();
 
-			const float ratio = 720.0f/1280.0f;
-
-			_shaderProgram.ProjectionMatrix = Matrix4.CreateOrthographic(80, 80*ratio, 1, -1);
-			_shaderProgram.ModelViewMatrix = new Vector2(-50, -20);
+			_shaderProgram.ProjectionMatrix = context.ProjectionMatrix;
+			_shaderProgram.ModelViewOffset = context.ModelViewOffset;
 
 			const int quadMemSize = 3*2; // 3 vertices per triangle, 2 triangles per quad
 			var vertexData = new Vector2[terrain.TerrainSegments.Count * quadMemSize];

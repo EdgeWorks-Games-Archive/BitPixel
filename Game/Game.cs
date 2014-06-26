@@ -4,13 +4,15 @@ using BitPixel;
 using BitPixel.Graphics;
 using BitPixel.World;
 using BitPixel.World.Graphics;
+using OpenTK;
 
 namespace Game
 {
 	internal class Game : IDisposable
 	{
-		private readonly GameWindow _gameWindow;
+		private readonly BitPixelWindow _window;
 		private readonly WorldRenderer _renderer;
+		private readonly Camera _camera;
 
 		private readonly ShaderProgram _shaderProgram;
 		private readonly World _world;
@@ -18,14 +20,19 @@ namespace Game
 		public Game()
 		{
 			// Set up the game loop
-			_gameWindow = new GameWindow();
-			_gameWindow.Render += OnRender;
+			_window = new BitPixelWindow();
+			_window.Update += OnUpdate;
+			_window.Render += OnRender;
 
 			// Set up the rendering data
 			_shaderProgram = new ShaderProgram(
 				File.ReadAllText("./Shaders/basic.vert.glsl"),
 				File.ReadAllText("./Shaders/color.frag.glsl"));
 			_renderer = new WorldRenderer(_shaderProgram);
+			_camera = new Camera(_window.Resolution, 40)
+			{
+				Position = new Vector2(50, 20)
+			};
 
 			// Set up a test world
 			_world = new World();
@@ -37,15 +44,20 @@ namespace Game
 			_renderer.Dispose();
 		}
 
+		void OnUpdate(object sender, GameLoopEventArgs e)
+		{
+		}
+
 		private void OnRender(object sender, GameLoopEventArgs e)
 		{
-			_world.Render(_renderer);
+			var renderContext = _camera.CreateContext();
+			_world.Render(_renderer, renderContext);
 		}
 
 		public void Run()
 		{
 			// Run the game loop
-			_gameWindow.Start();
+			_window.Start();
 		}
 	}
 }

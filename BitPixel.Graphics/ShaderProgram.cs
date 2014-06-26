@@ -64,7 +64,7 @@ namespace BitPixel.Graphics
 			}
 		}
 
-		public Vector2 ModelViewMatrix
+		public Vector2 ModelViewOffset
 		{
 			set
 			{

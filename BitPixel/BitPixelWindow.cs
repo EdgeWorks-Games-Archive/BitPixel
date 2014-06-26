@@ -7,11 +7,11 @@ using OpenTK.Graphics.OpenGL4;
 
 namespace BitPixel
 {
-	public sealed class GameWindow
+	public sealed class BitPixelWindow
 	{
 		private readonly OpenTK.GameWindow _gameWindow = new OpenTK.GameWindow(1280, 720, GraphicsMode.Default, "BitPixel");
 
-		public GameWindow()
+		public BitPixelWindow()
 		{
 			_gameWindow.WindowBorder = WindowBorder.Fixed;
 			_gameWindow.UpdateFrame += (s, e) => Update(this, new GameLoopEventArgs(TimeSpan.FromSeconds(e.Time)));
@@ -31,6 +31,7 @@ namespace BitPixel
 		}
 
 		public bool IsRunning { get; private set; }
+		public Size Resolution { get { return _gameWindow.ClientSize; } }
 
 		public event EventHandler<GameLoopEventArgs> Update = (s, a) => { };
 		public event EventHandler<GameLoopEventArgs> Render = (s, a) => { };

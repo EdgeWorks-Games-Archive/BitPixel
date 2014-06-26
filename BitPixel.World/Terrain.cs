@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using SharpNoise.Modules;
+using BitPixel.Graphics;
 
 namespace BitPixel.World
 {
@@ -30,9 +31,9 @@ namespace BitPixel.World
 			get { return _segments; }
 		}
 
-		public void Render(IWorldRenderer renderer)
+		public void Render(IWorldRenderer renderer, RenderContext context)
 		{
-			renderer.Render(this);
+			renderer.Render(this, context);
 		}
 	}
 }
