@@ -25,7 +25,7 @@ namespace BitPixel
 			GL.ClearColor(Color.Black);
 			GL.Clear(ClearBufferMask.ColorBufferBit);
 
-			Render(this, new GameLoopEventArgs(time));
+			Render(this, EventArgs.Empty);
 
 			_gameWindow.SwapBuffers();
 		}
@@ -34,7 +34,7 @@ namespace BitPixel
 		public Size Resolution { get { return _gameWindow.ClientSize; } }
 
 		public event EventHandler<GameLoopEventArgs> Update = (s, a) => { };
-		public event EventHandler<GameLoopEventArgs> Render = (s, a) => { };
+		public event EventHandler Render = (s, a) => { };
 
 		public void Start()
 		{

@@ -48,7 +48,7 @@ namespace Game
 		{
 		}
 
-		private void OnRender(object sender, GameLoopEventArgs e)
+		private void OnRender(object sender, EventArgs e)
 		{
 			var renderContext = _camera.CreateContext();
 			_world.Render(_renderer, renderContext);

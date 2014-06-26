@@ -34,6 +34,8 @@ namespace BitPixel.Graphics
 		public float Width { get { return _width; } }
 
 		public Vector2 Position { get; set; }
+		public RectangleF Limit { get; set; }
+		public bool UseLimit { get; set; }
 
 		public RenderContext CreateContext()
 		{
